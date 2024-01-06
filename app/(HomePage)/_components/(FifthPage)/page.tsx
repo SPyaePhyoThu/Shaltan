@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export const FifthPage: React.FC = () => {
+const FifthPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
 
   const clickHandler = () => {
@@ -45,3 +45,5 @@ export const FifthPage: React.FC = () => {
     </div>
   );
 };
+
+export default FifthPage;
