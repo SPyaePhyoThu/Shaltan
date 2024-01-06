@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Shoe" ALTER COLUMN "id" DROP DEFAULT;
+DROP SEQUENCE "Shoe_id_seq";
