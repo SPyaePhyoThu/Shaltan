@@ -14,26 +14,26 @@ model Shoe{
   id Int @id 
   name String
   brand String
-  img String[]
-  type String
-  price Decimal
-  sizes   ShoeSize[]
+  type String 
+  price Decimal  @map("numeric(10,2)") 
+  image String
+  sizes Size[]
+  images Image[]
+  createdAt DateTime @default(now())
 }
+
+model Image {
+  id Int @id @default(autoincrement())
+  url String
+  shoeId Int
+  shoe Shoe @relation(fields: [shoeId] , references: [id])
+}
+
 
 model Size {
-  id Int @id @default(autoincrement())
+  id    Int     @id @default(autoincrement())
   value String
-  shoes   ShoeSize[]
-}
-
-model ShoeSize{
-  id Int @id @default(autoincrement())
   stock Int
-
   shoeId Int
-  sizeId Int
-
-  shoe Shoe @relation(fields: [shoeId] , references: [id])
-  size Size @relation(fields: [sizeId] , references: [id])
-  @@unique([shoeId , sizeId])
-} 
+  shoe   Shoe @relation(fields: [shoeId], references: [id])
+}

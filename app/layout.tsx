@@ -1,25 +1,31 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Navbar from './components/navbar'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Navbar from "./components/navbar";
+import { ShoeProvider } from "./context/shoesContext";
+import { CartProvider } from "./context/cartContext";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'ShalTan',
-  description: 'ShalTan | shoes',
-}
+  title: "ShalTan",
+  description: "ShalTan | shoes",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ShoeProvider>
+          <CartProvider>{children}</CartProvider>
+        </ShoeProvider>
+      </body>
     </html>
-  )
+  );
 }
 
 //components

@@ -16,8 +16,8 @@ export const Card1 = () => {
         <p className="text-black text-sm px-4 pt-2">
           Discover the favorites of the season
         </p>
-        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center">
-          <Link href="/collection">Shop Now</Link>
+        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center transform transition-transform hover:translate-y-[-5px]">
+          <Link href="/collection?type=bestSeller">Shop Now</Link>
         </button>
       </div>
       <Image
@@ -40,8 +40,8 @@ export const Card2 = () => {
         <p className="text-black text-sm px-8 pt-2">
           Unveiling the latest arrivals!
         </p>
-        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center">
-          <Link href="/collection">Shop Now</Link>
+        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center transform transition-transform hover:translate-y-[-5px] ">
+          <Link href="/collection?type=newArrival">Shop Now</Link>
         </button>
       </div>
       <Image src={nikeAir} alt="shoe" width={270} height={180} />
@@ -63,8 +63,8 @@ export const Card3 = () => {
           Get Discount Today!
         </h3>
         <p className="text-white text-sm px-8 pt-2">Up To 50%</p>
-        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center">
-          <Link href="/collection">Shop Now</Link>
+        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center transform transition-transform hover:translate-y-[-5px]">
+          <Link href="/collection?type=sale">Shop Now</Link>
         </button>
       </div>
     </div>
@@ -80,8 +80,8 @@ export const Card4 = () => {
         <p className="text-black text-sm px-8 pt-2">
           Check out our classical shoes collection
         </p>
-        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center">
-          <Link href="/collection">Shop Now</Link>
+        <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center transform transition-transform hover:translate-y-[-5px]">
+          <Link href="/collection?type=classic">Shop Now</Link>
         </button>
       </div>
       <Image src={vans} alt="shoe" width={300} height={180} />

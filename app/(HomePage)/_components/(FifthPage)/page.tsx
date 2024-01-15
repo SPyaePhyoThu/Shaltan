@@ -1,12 +1,14 @@
 "use client";
 import { useState } from "react";
 
-const FifthPage: React.FC = () => {
+export const FifthPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
+  const [subscribed, setSubscribed] = useState(false);
 
   const clickHandler = () => {
     if (email.includes("@")) {
       setEmail("");
+      setSubscribed(true);
     }
   };
 
@@ -32,18 +34,22 @@ const FifthPage: React.FC = () => {
             />
           </label>
           <button
+            className={`text-black bg-white  px-7  text-xs rounded-full justify-self-start transform transition-transform hover:translate-x-[-5px] `}
             onClick={clickHandler}
-            className="text-black bg-white  px-7  text-xs rounded-full justify-self-start "
           >
             Subscribe
           </button>
         </div>
       </div>
-      <div className="absolute bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white px-3 py-1 rounded-full text-sm">
-        Thank You for Subscribing to Our Newsletter!
+      <div
+        className="absolute  animate-pulse text-center bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white px-3 py-1 rounded-full text-sm inline-block 
+      "
+      >
+        {subscribed ? "Thank You for Subscribing to Our Newsletter!" : ""}
       </div>
     </div>
   );
 };
-
-export default FifthPage;
+// overflow-hidden transition-max-width duration-1000 ease-in-out ${
+//   subscribed ? "max-w-full max-h-full" : "max-w-1 h-1"
+// }`
