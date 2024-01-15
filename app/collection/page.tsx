@@ -26,7 +26,7 @@ type CartItem = {
 };
 
 async function getShoe(): Promise<Shoe[]> {
-  const res = await fetch(`/api/shoe`);
+  const res = await fetch(`https://shaltan.vercel.app/api/shoe`);
   if (!res.ok) {
     console.error(res);
     return [];
