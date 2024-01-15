@@ -15,7 +15,7 @@ const Story = () => {
       </h1>
       <div className="grid grid-cols-[3fr_1.4fr] gap-10 w-card">
         <div className="h-full content-center grid justify-items-end grid-rows-[min-content_min-content_min-content_50px] ">
-          <p className="w-3/5 indent-5">
+          <p className="w-4/5 xl:w-3/5 indent-5">
             In the aftermath of the challenging times that defined 2020, a group
             of friends came together with a shared passion for footwear and a
             collective vision for rejuvenating the way people shop for shoes.
@@ -26,7 +26,7 @@ const Story = () => {
             curate a unique and diverse collection of shoes that echo the spirit
             of our times.
           </p>
-          <p className="w-3/5 indent-5">
+          <p className="w-4/5 xl:w-3/5 indent-5">
             In the dynamic evolution of our journey, what began as a thriving
             e-commerce venture has grown into the heart and soul of our
             community , in 2021 —a vibrant physical store. Originating in the
@@ -38,11 +38,11 @@ const Story = () => {
             we carry the spirit of our e-commerce origins—a commitment to
             exceptional footwear and a passion for personal connection.
           </p>
-          <p className="w-3/5 indent-5">
+          <p className="w-4/5 xl:w-3/5 indent-5">
             Join us on this adventure, and let ShalTan be the destination where
             every step is a statement .
           </p>
-          <button className="bg-white font-heading text-black px-2 rounded-sm justify-self-center ml-96 self-end shadow shadow-color5">
+          <button className="bg-white font-heading text-black px-2 rounded-sm justify-self-center ml-32 lg:ml-36 xl:ml-96 self-end shadow shadow-color5">
             <Link href="/">Home</Link>
           </button>
         </div>

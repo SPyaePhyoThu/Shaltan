@@ -18,7 +18,7 @@ export const NewsletterPage: React.FC = () => {
         <h1 className="text-white font-heading text-4xl text-center">
           Subscribe To Our Newsletter
         </h1>
-        <p className="text-white text-center">
+        <p className="text-white text-center text-sm md:text-base">
           Stay ahead in style! Subscribe for our newsletter to unlock exclusive
           offers and be the first to step into the latest trends.
         </p>
@@ -50,6 +50,3 @@ export const NewsletterPage: React.FC = () => {
     </div>
   );
 };
-// overflow-hidden transition-max-width duration-1000 ease-in-out ${
-//   subscribed ? "max-w-full max-h-full" : "max-w-1 h-1"
-// }`

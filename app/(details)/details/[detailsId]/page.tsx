@@ -118,8 +118,8 @@ const Details: React.FC = () => {
   };
 
   return (
-    <div className="h-dvh grid grid-rows-[max-content_1fr]">
-      <div className="grid grid-cols-[1fr_max-content_max-content] border-b-4 border-black border-solid mx-10 py-3 gap-5 items-center">
+    <div className="h-full grid grid-rows-[max-content_1fr]">
+      <div className="grid grid-cols-[1fr_max-content_max-content] border-b-4 border-black border-solid mx-1 lg:mx-10 py-3 gap-5 items-center">
         <h1 className="text-4xl font-heading font-bold ">ShalTan</h1>
         <div className="text-black font-semibold relative rounded-sm font-heading">
           <div className=" text-xs absolute bg-color1 rounded-full px-1  text-white -top-2 -right-2">
@@ -131,7 +131,7 @@ const Details: React.FC = () => {
           <Link href="/">Home </Link>
         </button>
       </div>
-      <div className="w-4/5 mx-auto py-5 grid grid-cols-[max-content_1fr_1fr] gap-10">
+      <div className="w-full lg:w-4/5 mx-auto py-5 px-1 md:px-5 lg:px-0 grid grid-cols-[max-content_1fr_1fr] gap-2 md:gap-10">
         <div className="h-full grid items-center gap-3">
           {images.map((image) => (
             <Image
@@ -171,7 +171,7 @@ const Details: React.FC = () => {
               <p className="pb-10">Price : {shoe.price}$</p>
             </div>
           ))}
-        <div className="pl-3 h-details grid  gap-4">
+        <div className="md:pl-3 h-details grid  gap-4">
           <div className="self-end">
             <h1 className="font-heading font-bold py-2">
               Size Chart

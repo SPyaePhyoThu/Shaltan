@@ -24,7 +24,7 @@ const CardContainer: React.FC = () => {
   };
 
   return (
-    <div className="relative overflow-hidden py-10">
+    <div className="relative overflow-hidden py-2 md:py-5 lg:py-10">
       <div
         ref={containerRef}
         id="card-container"

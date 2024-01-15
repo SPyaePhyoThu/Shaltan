@@ -46,7 +46,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
 
   return (
     <div key={item.id} className="grid grid-cols-[1fr_.5fr_.3fr] items-center">
-      <div className="grid grid-cols-[max-content,1fr] items-center gap-2">
+      <div className="grid grid-cols-[max-content,1fr] items-center gap-0 md:gap-2">
         <Image
           src={item.img}
           alt="shoe pic"
@@ -70,7 +70,7 @@ const CartItem: React.FC<CartItemProps> = ({ item }) => {
           <p>ID - {item.id}</p>
         </div>
       </div>
-      <div className="grid grid-cols-3 w-28 gap-2 justify-self-center">
+      <div className="grid grid-cols-3 w-28 gap-0 md:gap-2 justify-self-center">
         <button
           onClick={handleDecrease}
           className="bg-color1 rounded-sm text-white w-full text-xl"
@@ -117,9 +117,9 @@ const ShoppingCart: React.FC = () => {
   }, [cartState.items]);
 
   return (
-    <div className=" row-span-2 col-span-3 border-black border-solid border rounded py-2 px-4 grid grid-rows-[min-content_min-content_1fr_min-content]">
+    <div className=" row-span-2 col-span-3 border-black border-solid border rounded py-2 px-1 md:px-4 grid grid-rows-[min-content_min-content_1fr_min-content]">
       <h1 className="font-heading text-xl font-bold pb-2">Shopping Cart</h1>
-      <div className="px-1 pr-5 grid grid-cols-[1fr,.5fr,.3fr]">
+      <div className="px-1 pr-0 md:pr-5 grid grid-cols-[1fr,.5fr,.3fr]">
         <h3 className="font-heading">Products</h3>
         <h3 className="font-heading justify-self-center">Quantity</h3>
         <h3 className="font-heading justify-self-center">Price</h3>

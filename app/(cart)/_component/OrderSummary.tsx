@@ -91,7 +91,7 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({ deliveryInfo }) => {
   };
 
   return (
-    <div className="row-start-2 row-end-3 col-start-4 col-end-6 border-black border-solid border rounded py-2 px-4 text-sm grid grid-rows-[min-content_0.5fr_1fr_0.5fr_0.5fr_1fr_1fr] gap-1">
+    <div className="row-start-2 row-end-3 col-start-4 col-end-6 border-black border-solid border rounded py-2 px-1 md:px-4 text-sm grid grid-rows-[min-content_0.5fr_1fr_0.5fr_0.5fr_1fr_1fr] gap-1">
       <h1 className="font-heading text-xl font-bold pb-5">Order Summary</h1>
 
       <div className="grid grid-cols-2 border-color1 border-solid border-b-2">

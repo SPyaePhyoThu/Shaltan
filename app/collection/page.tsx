@@ -158,7 +158,7 @@ const Collection: React.FC = () => {
           <Link href="/">Home</Link>
         </button>
       </div>
-      <div className="px-10">
+      <div className="px-5 md:px-10">
         <h3 className="text-2xl font-heading font-bold">Collections</h3>
         <p className="text-sm py-2 indent-5">
           Welcome to our exclusive shoe collection page, where every step is a
@@ -176,7 +176,7 @@ const Collection: React.FC = () => {
           your distinctive style.
         </p>
       </div>
-      <div className="px-16 py-2 grid grid-cols-2">
+      <div className="px-8 md:px-16 py-2 grid grid-cols-2">
         <div className=" font-semibold flex gap-3 items-center">
           <p>Hide filter</p>
           <div className="relative w-7 h-4 rounded-full bg-color1">
@@ -196,10 +196,12 @@ const Collection: React.FC = () => {
         </p>
       </div>
       <div
-        className={showfilter ? "px-10 grid grid-cols-[0.3fr_1fr] " : "px-10 "}
+        className={
+          showfilter ? "px-5 md:px-10  grid grid-cols-[0.3fr_1fr] " : "px-10 "
+        }
       >
         {showfilter && (
-          <div className="grid px-5  gap-3  font-bold content-start">
+          <div className="grid px-2 md:px-5  gap-3  font-bold content-start">
             <div>
               <button
                 style={{

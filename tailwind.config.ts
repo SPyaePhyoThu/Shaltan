@@ -39,6 +39,7 @@ const config = {
         addButton: "100px",
         addButton2: "200px",
         photo: "200px",
+        signPage: "95%",
       },
       height: {
         card: "220px",
@@ -48,6 +49,7 @@ const config = {
         cart: "86%",
         details: "95%",
         signUpPage: "600px",
+        cartPage: "90%",
       },
       padding: {
         name: "30px",

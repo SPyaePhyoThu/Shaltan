@@ -35,7 +35,7 @@ export const DeliveryInfo: React.FC<DeliveryInfoProps> = ({ onChange }) => {
   return (
     <form
       onSubmit={submitHandler}
-      className="h-full row-start-1 row-end-2 col-start-4 col-end-6 border-black border-solid border rounded py-2 px-4 grid grid-rows-[min-content,1fr]"
+      className="h-full row-start-1 row-end-2 col-start-4 col-end-6 border-black border-solid border rounded py-2 px-1 md:px-4 grid grid-rows-[min-content,1fr]"
     >
       <h1 className="font-heading text-xl font-bold pb-2">
         Delivery Information

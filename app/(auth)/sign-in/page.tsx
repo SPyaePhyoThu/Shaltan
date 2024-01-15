@@ -47,13 +47,13 @@ const SignIn: React.FC = () => {
 
   return (
     <div className="h-dvh grid  content-center">
-      <div className="w-5/6 grid grid-cols-[1fr_max-content] border-8 border-solid border-black mx-auto rounded-xl ">
+      <div className="w-full lg:w-signPage xl:w-5/6 grid grid-cols-[1fr_0.7fr] lg:grid-cols-[1fr_max-content] border-8 border-solid border-black mx-auto rounded-xl ">
         <form
           onSubmit={submitHandler}
-          className="bg-black text-white p-3 grid grid-rows-[1.2fr_0.6fr_0.6fr_0.6fr_0.5fr_min-content_0.5fr_0.5fr] justify-items-center gap-3 rounded-r-lg"
+          className="bg-black text-white p-3 grid grid-rows-[1.2fr_0.6fr_0.6fr_0.6fr_0.5fr_min-content_0.5fr_0.5fr] justify-items-center gap-1 lg:gap-3 rounded-r-lg"
         >
           <div className="w-full relative">
-            <h1 className="font-heading text-white text-center text-5xl">
+            <h1 className="font-heading text-white text-center text-3xl lg:text-5xl">
               WELCOME
             </h1>
             <button className="absolute right-0 top-0  bg-white text-black rounded-full  px-2 text-sm font-semibold py-1">
@@ -67,7 +67,7 @@ const SignIn: React.FC = () => {
               placeholder="Full Name"
               onChange={(e) => setName(e.target.value)}
               value={name}
-              className="bg-transparent outline-none w-96 border-b-2 border-white border-solid placeholder-white "
+              className="bg-transparent outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
 
@@ -78,7 +78,7 @@ const SignIn: React.FC = () => {
               placeholder="E-mail"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className="bg-black outline-none w-96 border-b-2 border-white border-solid placeholder-white "
+              className="bg-black outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
 
@@ -89,33 +89,33 @@ const SignIn: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="Password"
-              className="bg-black outline-none w-96 border-b-2 border-white border-solid placeholder-white "
+              className="bg-black outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
 
           <button
             type="submit"
-            className="bg-white text-black h-10 w-96 rounded-full font-semibold self-end"
+            className="bg-white text-black text-xs lg:text-base h-7 lg:h-10 w-72 lg:w-96 rounded-full font-semibold self-end"
           >
             Log In
           </button>
           <p>or</p>
           <button
             onClick={clickHandler}
-            className="bg-white text-black h-10 w-96 rounded-full font-semibold"
+            className="bg-white text-black text-xs lg:text-base h-7 lg:h-10 w-72 lg:w-96 rounded-full font-semibold"
           >
             <Image
               src={google}
               alt="google"
               width={25}
               height={25}
-              className="inline mx-5"
+              className="inline mx-1 lg:mx-5"
             />
             Log in with google
           </button>
-          <div className="font-semibold text-xs">
+          <div className="font-semibold text-xs lg:text-base">
             New here?{" "}
-            <button className="bg-white text-black rounded-full px-2 py-1 ml-3">
+            <button className="bg-white text-black text-xs lg:text-base rounded-full px-2 py-1 ml-3">
               <Link href="/sign-up">Sign Up</Link>
             </button>
           </div>
