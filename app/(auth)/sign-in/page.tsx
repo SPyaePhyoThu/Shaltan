@@ -9,7 +9,6 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth, provider, signInWithPopup } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
-import { edgeServerPages } from "next/dist/build/webpack/plugins/pages-manifest-plugin";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>("");
