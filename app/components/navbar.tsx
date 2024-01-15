@@ -4,7 +4,7 @@ import { CartIcon } from "@/components/ui/CartIcon";
 import { ProfileIcon } from "@/components/ui/ProfileIcon";
 import { useCartContext } from "@/app/context/cartContext";
 
-export const Navbar = () => {
+const Navbar: React.FC = () => {
   const cartContext = useCartContext();
   const { cartState } = cartContext || {};
   return (
@@ -30,3 +30,4 @@ export const Navbar = () => {
     </div>
   );
 };
+export default Navbar;

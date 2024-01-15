@@ -45,10 +45,6 @@ const CardContainer: React.FC = () => {
         <div className="w-1/4  grid justify-items-center">
           <Card4 />
         </div>
-        {/* <Card1/>
-        <Card2/>
-        <Card3/>
-        <Card3/> */}
       </div>
       <div className="flex justify-center">
         {[0, 1, 2].map((index) => (
