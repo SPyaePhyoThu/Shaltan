@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Alert from "@/app/components/alert";
-import Navbar from "./Navbar";
+import Navbar from "@/app/components/Navbar";
 
 export const HeroPage = () => {
   return (
