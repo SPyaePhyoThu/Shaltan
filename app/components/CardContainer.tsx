@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Card1, Card2, Card3, Card4 } from "./Cards";
 
 const CardContainer: React.FC = () => {

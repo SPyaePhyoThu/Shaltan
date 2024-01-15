@@ -1,6 +1,6 @@
 import Map from "./Map";
 
-export const ThirdPage = () => {
+export const StoreLocationPage = () => {
   return (
     <div className="h-dvh bg-color5 p-5" id="store">
       <h1 className="font-heading text-center font-bold text-4xl mb-10">

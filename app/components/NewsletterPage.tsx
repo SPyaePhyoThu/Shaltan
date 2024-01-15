@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export const FifthPage: React.FC = () => {
+export const NewsletterPage: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [subscribed, setSubscribed] = useState(false);
 

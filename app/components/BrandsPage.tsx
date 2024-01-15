@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-export const FourthPage = () => {
+export const BrandsPage = () => {
   const [isHovered, setIsHovered] = useState("");
   return (
     <div

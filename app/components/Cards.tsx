@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import adidas from "../../../../public/images/adidas.png";
-import nikeAir from "../../../../public/images/NikeAirJordan.png";
-import nikeAirMax from "../../../../public/images/nike-air-max.png";
-import vans from "../../../../public/images/Vans1.png";
+import adidas from "../../public/images/adidas.png";
+import nikeAir from "../../public/images/NikeAirJordan.png";
+import nikeAirMax from "../../public/images/nike-air-max.png";
+import vans from "../../public/images/Vans1.png";
 
 export const Card1 = () => {
   return (
