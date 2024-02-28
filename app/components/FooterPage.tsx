@@ -9,8 +9,8 @@ export const FooterPage = () => {
   ];
   return (
     <>
-      <div className="bg-black text-white grid gird-rows-2 grid-cols-[0.3fr_1fr] gap-3 md:grid-rows-1 md:grid-cols-[1fr_0.5fr_1fr] h-full py-5 px-3 sm:py-10 sm:px-5 md:px-10">
-        <div className="col-span-2 md:col-span-1 mb-5 md:mb-0">
+      <div className="bg-black text-white grid grid-rows-[repeat(3,max-content)] grid-cols-1 gap-3 md:grid-rows-1 md:grid-cols-[1fr_0.5fr_1fr] h-full py-5 px-3 sm:py-10 sm:px-5 md:px-10">
+        <div className=" mb-5 md:mb-0">
           <h1 className="font-extrabold text-2xl font-heading pb-3 sm:pb-5 ">
             ShalTan
           </h1>
@@ -24,13 +24,13 @@ export const FooterPage = () => {
             your comfort and contentment are our top priorities.
           </p>
         </div>
-        <div className="justify-self-start md:justify-self-center text-sm">
-          <h1 className="font-extrabold text-xl font-heading pb-3 sm:pb-5 ">
+        <div className="justify-self-start md:justify-self-center text-sm grid grid-cols-5 md:grid-cols-1 items-center w-full  border-t-2 border-b-2 md:border-0 border-white border-solid py-2 md:py-0">
+          <h1 className="font-extrabold text-xl font-heading sm:pb-5 ">
             Social
           </h1>
           <p>Twitter</p>
-          <p className="py-3">Facebook</p>
-          <p className="pb-3 ">Instagram</p>
+          <p className="md:py-3">Facebook</p>
+          <p className="md:pb-3 ">Instagram</p>
           <p>Whatsapp</p>
         </div>
         <div className="text-sm md:pl-10">

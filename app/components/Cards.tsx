@@ -54,16 +54,7 @@ export const Card2 = () => {
 };
 export const Card3 = () => {
   return (
-    <div className="w-smallCard md:w-card my-6 md:my-10 h-card rounded-xl bg-black grid grid-rows-[0.7fr_1fr] md:grid-rows-1 md:grid-cols-2">
-      <div className="w-1/2 lg:w-auto self-center justify-self-center">
-        <Image
-          src={nikeAirMax}
-          alt="shoe"
-          width={250}
-          height={200}
-          className="transform scale-x-[-1]"
-        />
-      </div>
+    <div className="w-smallCard md:w-card my-6 md:my-10 h-card rounded-xl bg-black grid grid-rows-[1fr_0.7fr] md:grid-rows-1 md:grid-cols-2">
       <div className="grid grid-row-[1fr max-content 1fr] justify-items-center ">
         <h3 className="font-heading text-center text-white text-xl md:text-3xl self-end lg:text-xl pr-1">
           Get Discount Today!
@@ -72,6 +63,15 @@ export const Card3 = () => {
         <button className="bg-white text-black py-2 px-8 rounded-3xl font-semibold self-start justify-self-center transform transition-transform hover:translate-y-[-5px]">
           <Link href="/collection?type=sale">Shop Now</Link>
         </button>
+      </div>
+      <div className=" w-1/2 lg:w-auto self-center justify-self-center">
+        <Image
+          src={nikeAirMax}
+          alt="shoe"
+          width={250}
+          height={200}
+          className="transform scale-x-[-1]"
+        />
       </div>
     </div>
   );

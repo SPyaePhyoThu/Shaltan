@@ -30,7 +30,10 @@ export const BrandsPage = () => {
             <h1
               className="text-white font-heading text-2xl lg:text-4xl absolute top-2/4 left-1/3 transform -translate-y-2/4  border-b-4"
               style={{
-                width: isHovered === "nike" ? "34%" : "0",
+                width:
+                  isHovered === "nike" && window.innerWidth >= 768
+                    ? "34%"
+                    : "0",
                 transition: "width 0.3s ease",
               }}
               onMouseEnter={() => setIsHovered("nike")}
@@ -51,7 +54,10 @@ export const BrandsPage = () => {
             <h1
               className="text-white  font-heading text-2xl lg:text-4xl absolute top-2/4 left-1/3 transform -translate-y-2/4  border-b-4"
               style={{
-                width: isHovered === "vans" ? "40%" : "0",
+                width:
+                  isHovered === "vans" && window.innerWidth >= 768
+                    ? "40%"
+                    : "0",
                 transition: "width 0.3s ease",
               }}
               onMouseEnter={() => setIsHovered("vans")}
@@ -70,9 +76,12 @@ export const BrandsPage = () => {
             }}
           >
             <h1
-              className="text-white  font-heading text-3xl lg:text-5xl absolute top-2/4 left-1/3 transform -translate-y-2/4 border-b-4"
+              className="text-white  font-heading text-2xl md:text-3xl lg:text-5xl absolute top-2/4 left-1/3 transform -translate-y-2/4 border-b-4"
               style={{
-                width: isHovered === "puma" ? "38%" : "0",
+                width:
+                  isHovered === "puma" && window.innerWidth >= 768
+                    ? "38%"
+                    : "0",
                 transition: "width 0.3s ease",
               }}
               onMouseEnter={() => setIsHovered("puma")}
@@ -86,7 +95,10 @@ export const BrandsPage = () => {
           <div
             className="absolute inset-0 w-full h-full bg-black rounded-md"
             style={{
-              opacity: isHovered === "adidas" ? "0.6" : "0.8",
+              opacity:
+                isHovered === "adidas" && window.innerWidth >= 768
+                  ? "0.6"
+                  : "0.8",
               transition: "width 0.3s ease",
             }}
           >
@@ -107,14 +119,20 @@ export const BrandsPage = () => {
           <div
             className="absolute inset-0 w-full h-full bg-black rounded-md"
             style={{
-              opacity: isHovered === "converse" ? "0.6" : "0.8",
+              opacity:
+                isHovered === "converse" && window.innerWidth >= 768
+                  ? "0.6"
+                  : "0.8",
               transition: "width 0.3s ease",
             }}
           >
             <h1
               className="text-white  font-heading text-2xl lg:text-4xl absolute top-2/4 left-1/3 md:left-8 transform -translate-y-2/4 border-b-4 "
               style={{
-                width: isHovered === "converse" ? "77%" : "0",
+                width:
+                  isHovered === "converse" && window.innerWidth >= 768
+                    ? "77%"
+                    : "0",
                 transition: "width 0.3s ease",
               }}
               onMouseEnter={() => setIsHovered("converse")}

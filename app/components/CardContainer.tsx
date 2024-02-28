@@ -57,18 +57,23 @@ const CardContainer: React.FC = () => {
           ></button>
         ))}
       </div>
-      <button
-        className="absolute mx-2 top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full h-10 w-10 shadow shadow-black text-xl"
-        onClick={scrollLeft}
-      >
-        &larr;
-      </button>
-      <button
-        className="absolute mx-2 top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full h-10 w-10 shadow shadow-black"
-        onClick={scrollRight}
-      >
-        &rarr;
-      </button>
+      {window.innerWidth >= 600 && (
+        <>
+          {" "}
+          <button
+            className="absolute mx-2 top-1/2 left-0 transform -translate-y-1/2 bg-white rounded-full h-10 w-10 shadow shadow-black text-xl"
+            onClick={scrollLeft}
+          >
+            &larr;
+          </button>
+          <button
+            className="absolute mx-2 top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full h-10 w-10 shadow shadow-black"
+            onClick={scrollRight}
+          >
+            &rarr;
+          </button>{" "}
+        </>
+      )}
     </div>
   );
 };
