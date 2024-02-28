@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const InformationBar: React.FC = () => {
   const sentences: string[] = [
-    "Up to 50% off on selected items, only on January!",
+    "Up to 50% off on selected items, only this month!",
     "Discover our curated collection of best sellers– explore now!",
     "Step into timeless elegance with our classics selection.",
     "Explore our new arrivals & be the first to seize the freshest looks of the season!",
@@ -22,7 +22,7 @@ const InformationBar: React.FC = () => {
 
   return (
     <div className="h-6 w-full pt-1">
-      <p className="text-xs text-center">{sentence}</p>
+      <p className="text-information md:text-xs text-center">{sentence}</p>
     </div>
   );
 };

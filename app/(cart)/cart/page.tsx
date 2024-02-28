@@ -1,17 +1,11 @@
 "use client";
 import { useState } from "react";
-import { DeliveryInfo } from "../_component/DeliveryInfo";
+
 import { OrderSummary } from "../_component/OrderSummary";
 import ShoppingCart from "../_component/ShoppinCart";
 import Link from "next/link";
 
 const Cart = () => {
-  const [deliveryInfo, setDeliveryInfo] = useState<any>();
-
-  const deliveryInfoChangeHandler = (newDeliveryInfo: any) => {
-    setDeliveryInfo(newDeliveryInfo);
-  };
-
   return (
     <div className="h-full">
       <p className="text-sm text-center p-1 font-bold text-red-500">
@@ -21,10 +15,9 @@ const Cart = () => {
           <Link href="/"> Home</Link>
         </button>
       </p>
-      <div className="h-cartPage w-full px-3 lg:w-4/5 my-auto md:m-auto grid grid-rows-2 grid-cols-5 gap-3 ">
+      <div className="h-cartPage w-full px-3 lg:w-cart my-auto md:m-auto grid grid-rows-[1fr_max-content] lg:grid-rows-1 lg:grid-cols-[1fr_0.6fr] gap-3 ">
         <ShoppingCart />
-        <DeliveryInfo onChange={deliveryInfoChangeHandler} />
-        <OrderSummary deliveryInfo={deliveryInfo} />
+        <OrderSummary />
       </div>
     </div>
   );

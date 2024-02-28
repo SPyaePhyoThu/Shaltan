@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import google from "../../../components/ui/icons8-google-48.png";
-import photo from "../../../public/images/SignPhoto.jpg";
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -47,22 +46,16 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="h-dvh grid  content-center">
-      <div className="w-full lg:w-signPage xl:w-5/6 grid grid-cols-[0.7fr_1fr] lg:grid-cols-[max-content_1fr] border-8 border-solid border-black mx-auto rounded-xl ">
-        <Image
-          src={photo}
-          alt="shoes pic"
-          height={400}
-          width={450}
-          className="rounded-lg"
-        />
+    <div className="h-dvh grid bg-black  content-center">
+      <div className="w-full lg:w-signPage xl:w-5/6 grid md:grid-cols-[0.7fr_1fr] lg:grid-cols-[max-content_1fr] md:border-4 border-solid border-white mx-auto rounded-xl ">
+        <div className="w-0 h-0 md:w-smallImage lg:w-image md:h-signUpPage bg-[url('/images/SignPhoto.jpg')] bg-cover bg-center"></div>
 
         <form
           onSubmit={submitHandler}
-          className="bg-black text-white p-3 grid grid-rows-[1.2fr_0.6fr_0.6fr_0.6fr_0.5fr_min-content_0.5fr_0.5fr] justify-items-center gap-1 lg:gap-3 rounded-l-lg"
+          className="w-full h-screen md:h-auto md:w-auto bg-black text-white p-3 grid grid-rows-[1fr_0.3fr_0.3fr_0.3fr_.3fr_max-content_.5fr_1fr] md:grid-rows-[1.2fr_0.6fr_0.6fr_0.6fr_0.5fr_min-content_0.5fr_0.5fr] justify-items-center gap-1 lg:gap-3 rounded-l-lg"
         >
-          <div className="w-full relative">
-            <h1 className="font-heading text-white text-center text-3xl lg:text-5xl">
+          <div className="w-full relative grid items-center">
+            <h1 className="mt-10 md:mt-5 font-heading text-white text-center text-3xl lg:text-5xl">
               Create Account
             </h1>
             <button className="absolute right-0 top-0  bg-white text-black rounded-full  px-2 text-sm font-semibold py-1">
@@ -76,6 +69,7 @@ const SignUp: React.FC = () => {
               placeholder="Full Name"
               onChange={(e) => setName(e.target.value)}
               value={name}
+              required
               className="bg-transparent outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
@@ -87,6 +81,7 @@ const SignUp: React.FC = () => {
               placeholder="E-mail"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              required
               className="bg-black outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
@@ -98,6 +93,7 @@ const SignUp: React.FC = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               value={password}
+              required
               className="bg-black outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
@@ -124,9 +120,12 @@ const SignUp: React.FC = () => {
           </button>
           <div className="font-semibold text-xs lg:text-base">
             Already have a account?
-            <button className="bg-white text-black text-xs lg:text-base rounded-full px-2 py-1 ml-3">
-              <Link href="/sign-in">Log in</Link>
-            </button>
+            <Link
+              href="/sign-in"
+              className=" text-color1 text-xs lg:text-base rounded-full px-2 py-1 ml-3"
+            >
+              Log in
+            </Link>
           </div>
         </form>
       </div>

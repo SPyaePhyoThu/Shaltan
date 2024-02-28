@@ -7,6 +7,7 @@ import { useCartContext } from "@/app/context/cartContext";
 import { useParams } from "next/navigation";
 
 import { CartIcon } from "@/components/ui/CartIcon";
+import Loading from "@/app/components/Loading";
 
 interface Image {
   id: number;
@@ -60,6 +61,7 @@ const Details: React.FC = () => {
   const sizesArray = sizes?.map((size) => size.value);
   const stock = sizes?.map((size) => size.stock) || [];
   const [stockIndex, setStockIndex] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const detailsId = params?.detailsId;
@@ -74,6 +76,7 @@ const Details: React.FC = () => {
         setSizes(sizes);
       };
       fetchData();
+      setLoading(false);
     }
   }, [params?.detailsId]);
   console.log(images, "images");
@@ -85,12 +88,6 @@ const Details: React.FC = () => {
   const correctedSuggestedShoes = suggestedShoes
     ?.filter((shoe) => selectedShoe && shoe.id !== selectedShoe[0]?.id)
     .slice(1);
-  console.log(correctedSuggestedShoes);
-  const imageArray = [
-    "https://github.com/SPyaePhyoThu/Images/blob/master/Vans%20suede/vanssuede2.png?raw=true",
-    "https://github.com/SPyaePhyoThu/Images/blob/master/Vans%20suede/vanssuede1.png?raw=true",
-    "https://github.com/SPyaePhyoThu/Images/blob/master/Vans%20suede/vanssuede3.png?raw=true",
-  ];
 
   const addToCartHandler = (id: number) => {
     const shoe = state?.shoes.find((shoe) => shoe.id === id);
@@ -131,19 +128,25 @@ const Details: React.FC = () => {
           <Link href="/">Home </Link>
         </button>
       </div>
-      <div className="w-full lg:w-4/5 mx-auto py-5 px-1 md:px-5 lg:px-0 grid grid-cols-[max-content_1fr_1fr] gap-2 md:gap-10">
-        <div className="h-full grid items-center gap-3">
-          {images.map((image) => (
-            <Image
-              key={image.id}
-              src={image.url}
-              alt="shoe pic"
-              width={95}
-              height={100}
-              className="rounded-sm border border-solid border-black"
-            />
-          ))}
-        </div>
+      <div className="w-full lg:w-4/5 mx-auto py-5 px-1 md:px-5 lg:px-0 grid grid-rows-[max-content_1fr_1fr] md:grid-rows-1 md:grid-cols-[max-content_1fr_1fr] gap-2 md:gap-10">
+        {loading ? (
+          <div className="m-auto">
+            <Loading />
+          </div>
+        ) : (
+          <div className="h-full grid grid-cols-4 md:grid-cols-1 justify-items-center items-center gap-3">
+            {images.map((image) => (
+              <Image
+                key={image.id}
+                src={image.url}
+                alt="shoe pic"
+                width={95}
+                height={100}
+                className="rounded-sm border border-solid border-black"
+              />
+            ))}
+          </div>
+        )}
         {selectedShoe &&
           selectedShoe.map((shoe) => (
             <div
@@ -167,7 +170,9 @@ const Details: React.FC = () => {
                 alt="shoe pic"
                 className="rounded-sm self-center "
               />
-              <h1 className="font-heading text-2xl font-bold">{shoe.name}</h1>
+              <h1 className="font-heading text-center text-2xl font-bold">
+                {shoe.name}
+              </h1>
               <p className="pb-10">Price : {shoe.price}$</p>
             </div>
           ))}
@@ -244,10 +249,10 @@ const Details: React.FC = () => {
                 </div>
                 <button
                   onClick={() => addToCartHandler(shoe.id)}
-                  className="w-full text-white text-xl bg-color1 h-10 rounded-sm self-center"
+                  className="w-full mt-5 text-white text-lg text-bold bg-color1 h-10 rounded-sm self-center"
                 >
                   {cartState.items.find((item) => item.id === id)
-                    ? "\u2713"
+                    ? "Added \u2713"
                     : "Add to Cart"}
                 </button>
               </div>
@@ -276,14 +281,6 @@ const Details: React.FC = () => {
                       {shoe.name}
                     </h1>
                     <p className="text-xs">Price : {shoe.price}$</p>
-                    <button
-                      onClick={() => addToCartHandler(shoe.id)}
-                      className=" w-addButton bg-color1 text-white rounded-sm"
-                    >
-                      {cartState.items.find((item) => item.id === shoe.id)
-                        ? "\u2713"
-                        : "+"}
-                    </button>
                   </li>
                 ))}
             </ul>

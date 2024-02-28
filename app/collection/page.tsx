@@ -2,10 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CartIcon } from "@/components/ui/CartIcon";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useShoeContext } from "@/app/context/shoesContext";
 import { useCartContext } from "../context/cartContext";
 import { useSearchParams } from "next/navigation";
+import Loading from "../components/Loading";
 
 interface Shoe {
   id: number;
@@ -41,6 +42,7 @@ const Collection: React.FC = () => {
   const [showPrices, setShowPrices] = useState<boolean>(false);
   const [activeFilter, setActiveFilter] = useState("all");
   const [shoesArray, setShoesArray] = useState<Shoe[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const ShoeContext = useShoeContext();
   const CartContext = useCartContext();
   const { state, dispatch } = ShoeContext || {};
@@ -51,7 +53,7 @@ const Collection: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const shoeData = await getShoe();
-      console.log(shoeData);
+      setLoading(false);
       setShoesArray(shoeData);
       if (ShoeContext && dispatch) {
         dispatch({ type: "SET_SHOES", payload: shoeData });
@@ -116,67 +118,35 @@ const Collection: React.FC = () => {
     dispatch({ type: "ALL_SHOES" });
     setActiveFilter("all");
   };
-  const addToCartHandler = (id: number) => {
-    const selectedShoe = state?.shoes.find((shoe) => shoe.id === id);
-
-    if (!CartContext || !cartDispatch || !dispatch) {
-      return;
-    }
-
-    let cartItem: CartItem | null = null;
-
-    if (selectedShoe) {
-      cartItem = {
-        id: selectedShoe.id,
-        name: selectedShoe.name,
-        price: selectedShoe.price,
-        quantity: 1,
-        size: 39,
-        img: selectedShoe.image,
-        stock: 5,
-      };
-    }
-    cartDispatch({
-      type: "ADD_TO_CART",
-      payload: cartItem,
-    });
-  };
 
   return (
     <div className="h-full w-full grid gap-4 grid-rows-[min-content_min-content_min-content_1fr]">
       <div className="bg-black relative w-full">
-        <h1 className="text-5xl font-heading font-bold text-center text-white">
+        <h1 className="text-3xl p-2 sm:text-4xl sm:p-0 md:text-5xl  font-heading font-bold text-center text-white">
           ShalTan
         </h1>
-        <div className="text-black font-semibold absolute right-3 top-4 px-2 rounded-sm font-heading">
+        <div className="text-black font-semibold absolute right-3 md:right-5 lg:right-8 top-4 px-3 rounded-sm font-heading">
           <div className="text-xs absolute bg-color1 rounded-full px-1  text-black -top-2 right-0">
             {cartState.items && cartState.items.length}
           </div>
           <CartIcon className="text-black" />
         </div>
-        <button className="text-black font-semibold absolute left-3 top-3 bg-color1 px-2 rounded-sm font-heading">
+        <button className="text-black font-semibold absolute left-3 md:left-5 lg:left-8 top-3 bg-color1 px-2 rounded-sm font-heading">
           <Link href="/">Home</Link>
         </button>
       </div>
-      <div className="px-5 md:px-10">
+      <div className="px-3 md:px-5 lg:px-8">
         <h3 className="text-2xl font-heading font-bold">Collections</h3>
-        <p className="text-sm py-2 indent-5">
+        <p className="text-sm py-2 indent-10 text-justify leading-5">
           Welcome to our exclusive shoe collection page, where every step is a
           statement and every pair tells a unique story of style and
           craftsmanship. Explore a curated selection of footwear that transcends
           trends, showcasing a fusion of comfort, elegance, and on-trend
           designs. From casual sneakers to sophisticated shoes, our collection
-          caters to diverse tastes and occasions. Immerse yourself in a world of
-          quality materials, intricate details, and a palette of colors that
-          define both classic and contemporary fashion. Whether you are seeking
-          the perfect pair for a casual day out or a special event, our shoe
-          collection is a celebration of individuality, allowing you to stride
-          with confidence and express your personal fashion journey. Step into a
-          realm where every shoe is more than an accessory,it is a reflection of
-          your distinctive style.
+          caters to diverse tastes and occasions.
         </p>
       </div>
-      <div className="px-8 md:px-16 py-2 grid grid-cols-2">
+      <div className="px-3 md:px-5 lg:px-8 py-2 grid grid-cols-2">
         <div className=" font-semibold flex gap-3 items-center">
           <p>Hide filter</p>
           <div className="relative w-7 h-4 rounded-full bg-color1">
@@ -191,45 +161,45 @@ const Collection: React.FC = () => {
           </div>
         </div>
 
-        <p className="font-semibold pr-10 justify-self-end">
+        <p className="font-semibold justify-self-end">
           Result: {state?.filteredShoes.length}
         </p>
       </div>
       <div
         className={
-          showfilter ? "px-5 md:px-10  grid grid-cols-[0.3fr_1fr] " : "px-10 "
+          showfilter
+            ? "px-3 md:px-5 lg:px-8 grid grid-rows-[max-content_1fr] gap-y-5 sm:gap-y-0 sm:grid-rows-1 sm:grid-cols-[0.4fr_1fr] md:grid-cols-[0.2fr_1fr] gap-2"
+            : "px-3 md:px-5 lg:px-8 "
         }
       >
         {showfilter && (
-          <div className="grid px-2 md:px-5  gap-3  font-bold content-start">
-            <div>
-              <button
-                style={{
-                  color: activeFilter === "all" ? "#43655A" : "",
-                  fontSize: activeFilter === "all" ? "1.1rem" : "",
-                }}
-                onClick={displayedAllShoes}
-              >
-                All
-              </button>
-            </div>
-            <div className="grid grid-cols-2 ">
+          <div className="grid grid-cols-3 grid-rows-[repeat(3,max-content)] md:grid-cols-1 md:grid-rows-[repeat(7,max-content)] gap-3 font-semibold  items-center  ">
+            <button
+              className="justify-self-center sm:justify-self-start border-2 border-solid border-black w-full rounded-md sm:border-0 md:justify-self-start sm:w-0"
+              style={{
+                color: activeFilter === "all" ? "#43655A" : "",
+              }}
+              onClick={displayedAllShoes}
+            >
+              All
+            </button>
+            <div className="grid grid-cols-2 w-full md:justify-self-start border-2 border-solid border-black px-3 sm:px-0 rounded-md sm:border-0 ">
               <p>Brands</p>
               <button
                 onClick={() => setShowBrand((prev) => !prev)}
-                className="justify-self-center"
+                className="justify-self-end bg-color1 h-6 w-6 rounded-full"
               >
                 {showBrand ? "-" : "+"}
               </button>
             </div>
             {showBrand && (
-              <div className="text-sm font-semibold grid justify-items-start">
+              <div className="text-sm font-semibold grid justify-items-start md:justify-self-start ">
                 <button
                   onClick={() => brandFilterHandler("nike")}
                   style={{
                     color: activeFilter === "nike" ? "#43655A" : "",
-                    fontSize: activeFilter === "nike" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
                   Nike
                 </button>
@@ -237,8 +207,8 @@ const Collection: React.FC = () => {
                   onClick={() => brandFilterHandler("adidas")}
                   style={{
                     color: activeFilter === "adidas" ? "#43655A" : "",
-                    fontSize: activeFilter === "adidas" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
                   Adidas
                 </button>
@@ -246,8 +216,8 @@ const Collection: React.FC = () => {
                   onClick={() => brandFilterHandler("converse")}
                   style={{
                     color: activeFilter === "converse" ? "#43655A" : "",
-                    fontSize: activeFilter === "converse" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
                   Converse
                 </button>
@@ -255,160 +225,158 @@ const Collection: React.FC = () => {
                   onClick={() => brandFilterHandler("puma")}
                   style={{
                     color: activeFilter === "puma" ? "#43655A" : "",
-                    fontSize: activeFilter === "puma" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
-                  puma
+                  Puma
                 </button>
                 <button
                   onClick={() => brandFilterHandler("vans")}
                   style={{
                     color: activeFilter === "vans" ? "#43655A" : "",
-                    fontSize: activeFilter === "vans" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
                   Vans
                 </button>
               </div>
             )}
-            <div className="grid grid-cols-2">
-              <p>Search by Price</p>
+            <div className="grid grid-cols-2 justify-self-center sm:justify-self-start w-full border-2 border-solid border-black px-3 sm:px-0  rounded-md sm:border-0">
+              <p>Price</p>
               <button
                 onClick={() => setShowPrices((prev) => !prev)}
-                className="justify-self-center"
+                className="justify-self-end  bg-color1 w-6 h-6 rounded-full"
               >
                 {showPrices ? "-" : "+"}
               </button>
             </div>
             {showPrices && (
-              <div className="text-sm font-semibold grid justify-items-start">
+              <div className="text-sm font-semibold grid justify-items-start md:justify-self-start">
                 <button
                   onClick={() => priceFilterHandler("0-100$")}
                   style={{
                     color: activeFilter === "0-100$" ? "#43655A" : "",
-                    fontSize: activeFilter === "0-100$" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
-                  0-100$
+                  0$ - 100$
                 </button>
                 <button
                   onClick={() => priceFilterHandler("100-200$")}
                   style={{
                     color: activeFilter === "100-200$" ? "#43655A" : "",
-                    fontSize: activeFilter === "100-200$" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
-                  100-200$
+                  100$ - 200$
                 </button>
                 <button
                   onClick={() => priceFilterHandler("200-300$")}
                   style={{
                     color: activeFilter === "200-300$" ? "#43655A" : "",
-                    fontSize: activeFilter === "200-300$" ? "1.1rem" : "",
                   }}
+                  className="border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
                 >
-                  200-300$
+                  200$ - 300$
                 </button>
               </div>
             )}
             <button
               onClick={() => typeFilterHandler("newArrival")}
-              className="justify-self-start"
+              className="justify-self-center sm:justify-self-start border-2 border-solid border-black w-full rounded-md sm:border-0 sm:w-fit"
               style={{
                 color: activeFilter === "newArrival" ? "#43655A" : "",
-                fontSize: activeFilter === "newArrival" ? "1.1rem" : "",
               }}
             >
               New Arrivals
             </button>
             <button
               onClick={() => typeFilterHandler("sale")}
-              className="justify-self-start"
+              className="justify-self-center sm:justify-self-start w-full border-2 border-solid border-black  rounded-md sm:border-0 sm:w-fit"
               style={{
                 color: activeFilter === "sale" ? "#43655A" : "",
-                fontSize: activeFilter === "sale" ? "1.1rem" : "",
               }}
             >
               Sale Items
             </button>
             <button
               onClick={() => typeFilterHandler("bestSeller")}
-              className="justify-self-start"
+              className="justify-self-center sm:justify-self-start w-full border-2 border-solid border-black  rounded-md sm:border-0 sm:w-fit"
               style={{
                 color: activeFilter === "bestSeller" ? "#43655A" : "",
-                fontSize: activeFilter === "bestSeller" ? "1.1rem" : "",
               }}
             >
               Best Sellers
             </button>
             <button
               onClick={() => typeFilterHandler("classic")}
-              className="justify-self-start"
+              className="justify-self-center sm:justify-self-start w-full border-2 border-solid border-black rounded-md sm:border-0 sm:w-fit"
               style={{
                 color: activeFilter === "classic" ? "#43655A" : "",
-                fontSize: activeFilter === "classic" ? "1.1rem" : "",
               }}
             >
               Classics
             </button>
           </div>
         )}
-
-        <div className="h-full grid grid-rows-[1fr_min-content] gap-5">
-          <div className="w-full grid grid-cols-5 gap-3 grid-rows-[1fr,1fr,1fr]">
-            {currentShoes &&
-              currentShoes.map((shoe) => (
-                <div
-                  key={shoe.id}
-                  id={`${shoe.id}`}
-                  className="grid justify-items-center gap-1 "
-                >
-                  <Link href={`/details/${shoe.id}`}>
-                    <Image
-                      src={shoe.image}
-                      alt="shoe pic"
-                      width={200}
-                      height={100}
-                      className="rounded-sm"
-                    />
-                  </Link>
-
-                  <h1 className="text-xs font-bold">{shoe.name}</h1>
-
-                  <p className="text-xs">Price : {shoe.price} $</p>
-                  <button
-                    onClick={() => addToCartHandler(shoe.id)}
-                    className=" w-addButton bg-color1 text-white rounded-sm"
+        {loading ? (
+          <div className="m-auto">
+            <Loading />
+          </div>
+        ) : (
+          <div className="h-full grid grid-rows-[1fr_min-content] gap-5">
+            <div className="w-full grid gap-3 grid-cols-3 md:grid-cols-5  ">
+              {currentShoes &&
+                currentShoes.map((shoe) => (
+                  <div
+                    key={shoe.id}
+                    id={`${shoe.id}`}
+                    className="grid justify-items-center gap-1 grid-rows-[repeat(3,max-content)]"
                   >
-                    {cartState.items.find((item) => item.id === shoe.id)
-                      ? "\u2713"
-                      : "+"}
-                  </button>
-                </div>
-              ))}
-          </div>
-          <div className="grid grid-cols-[1fr_max-content_1fr] items-center gap-5 py-5">
-            <button
-              disabled={currentPage === 1}
-              onClick={previousClickHandler}
-              className="bg-color1 rounded-full text-white px-2 py-1 grid justify-self-end"
-            >
-              &larr;
-            </button>
-            <span className="text-xs ">
-              Page <strong> {currentPage} </strong> of{" "}
-              <strong> {totalPages} </strong>
-            </span>
-            <button
-              disabled={currentPage === totalPages}
-              onClick={nextClickHandler}
-              className="bg-color1 rounded-full text-white px-2 py-1 grid justify-self-start
+                    <Link href={`/details/${shoe.id}`}>
+                      <Image
+                        src={shoe.image}
+                        alt="shoe pic"
+                        width={200}
+                        height={100}
+                        className="rounded-sm"
+                      />
+                    </Link>
+
+                    <h1 className="text-sm font-bold text-center">
+                      {shoe.name}
+                    </h1>
+
+                    <p className="text-sm text-center">
+                      Price : {shoe.price} $
+                    </p>
+                  </div>
+                ))}
+            </div>
+
+            <div className="grid grid-cols-[1fr_max-content_1fr] items-center gap-5 py-5">
+              <button
+                disabled={currentPage === 1}
+                onClick={previousClickHandler}
+                className="bg-color1 rounded-full text-white px-2 py-1 grid justify-self-end"
+              >
+                &larr;
+              </button>
+              <span className="text-xs ">
+                Page <strong> {currentPage} </strong> of{" "}
+                <strong> {totalPages} </strong>
+              </span>
+              <button
+                disabled={currentPage === totalPages}
+                onClick={nextClickHandler}
+                className="bg-color1 rounded-full text-white px-2 py-1 grid justify-self-start
             "
-            >
-              &rarr;
-            </button>
+              >
+                &rarr;
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

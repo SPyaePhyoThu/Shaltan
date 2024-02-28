@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import google from "../../../components/ui/icons8-google-48.png";
-import photo from "../../../public/images/SignPhoto.jpg";
 
 import { useState, ChangeEvent, FormEvent } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -46,14 +45,14 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <div className="h-dvh grid  content-center">
-      <div className="w-full lg:w-signPage xl:w-5/6 grid grid-cols-[1fr_0.7fr] lg:grid-cols-[1fr_max-content] border-8 border-solid border-black mx-auto rounded-xl ">
+    <div className="h-dvh grid bg-black  content-center">
+      <div className="w-full lg:w-signPage xl:w-5/6 grid md:grid-cols-[1fr_0.3fr] lg:grid-cols-[1fr_max-content] md:border-4 border-solid border-white mx-auto rounded-xl ">
         <form
           onSubmit={submitHandler}
-          className="bg-black text-white p-3 grid grid-rows-[1.2fr_0.6fr_0.6fr_0.6fr_0.5fr_min-content_0.5fr_0.5fr] justify-items-center gap-1 lg:gap-3 rounded-r-lg"
+          className="w-full h-screen md:h-auto md:w-auto bg-black text-white p-3 grid grid-rows-[1fr_0.3fr_0.3fr_0.3fr_.3fr_max-content_.5fr_1fr] md:grid-rows-[1.2fr_0.6fr_0.6fr_0.6fr_0.5fr_min-content_0.5fr_1fr] justify-items-center gap-1 lg:gap-3 md:rounded-r-lg"
         >
-          <div className="w-full relative">
-            <h1 className="font-heading text-white text-center text-3xl lg:text-5xl">
+          <div className="w-full relative grid items-center">
+            <h1 className="mt-10 md:mt-5 font-heading text-white text-center text-3xl lg:text-5xl">
               WELCOME
             </h1>
             <button className="absolute right-0 top-0  bg-white text-black rounded-full  px-2 text-sm font-semibold py-1">
@@ -67,6 +66,7 @@ const SignIn: React.FC = () => {
               placeholder="Full Name"
               onChange={(e) => setName(e.target.value)}
               value={name}
+              required
               className="bg-transparent outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
@@ -78,6 +78,7 @@ const SignIn: React.FC = () => {
               placeholder="E-mail"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
+              required
               className="bg-black outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
           </label>
@@ -88,6 +89,7 @@ const SignIn: React.FC = () => {
               id="password"
               onChange={(e) => setPassword(e.target.value)}
               value={password}
+              required
               placeholder="Password"
               className="bg-black outline-none w-72 lg:w-96 border-b-2 border-white border-solid placeholder-white text-xs lg:text-base"
             />
@@ -115,18 +117,15 @@ const SignIn: React.FC = () => {
           </button>
           <div className="font-semibold text-xs lg:text-base">
             New here?{" "}
-            <button className="bg-white text-black text-xs lg:text-base rounded-full px-2 py-1 ml-3">
-              <Link href="/sign-up">Sign Up</Link>
-            </button>
+            <Link
+              href="/sign-up"
+              className=" text-color1 text-xs lg:text-base rounded-full px-2 py-1 ml-3"
+            >
+              Sign up
+            </Link>
           </div>
         </form>
-        <Image
-          src={photo}
-          alt="shoes pic"
-          height={400}
-          width={450}
-          className="rounded-lg"
-        />
+        <div className="w-0 h-0 md:w-smallImage lg:w-image md:h-signUpPage bg-[url('/images/SignPhoto.jpg')] bg-cover bg-center"></div>
       </div>
     </div>
   );
