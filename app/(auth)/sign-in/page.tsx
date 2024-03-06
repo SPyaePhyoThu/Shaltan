@@ -55,7 +55,7 @@ const SignIn: React.FC = () => {
             <h1 className="mt-10 md:mt-5 font-heading text-white text-center text-3xl lg:text-5xl">
               WELCOME
             </h1>
-            <button className="absolute right-0 top-0  bg-white text-black rounded-full  px-2 text-sm font-semibold py-1">
+            <button className="absolute right-0 top-6  bg-white text-black rounded-full  px-2 text-sm font-semibold py-1">
               <Link href="/"> Home </Link>
             </button>
           </div>
